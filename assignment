@@ -1,0 +1,270 @@
+echo "# c-programs" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/AkshatChan01/c-programs.git
+git push -u origin main
+
+Ques 1 : WAp to find the sum of series 1+2+3+4+...... using recurrsion
+Sol:
+#include <stdio.h>
+
+int sumSeries(int n) {
+    if (n == 1)
+        return 1;
+    else
+        return n + sumSeries(n - 1);
+}
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n < 1) {
+        printf("Please enter a positive number\n");
+        return 1;
+    }
+
+    int sum = sumSeries(n);
+    printf("The sum of the series 1 + 2 + 3 + 4 + ... + %d is: %d\n", n, sum);
+
+    return 0;
+}
+
+
+
+Ques 2: WAP to find the factorial of a number using recurrsion
+Sol :
+#include <stdio.h>
+int fact(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * fact(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a number : ");
+    scanf("%d", &num);
+
+    if (num < 0) {
+        printf("Factorial is not defined for negative numbers \n");
+        return 1;
+    }
+
+    int result = fact(num);
+    printf("Factorial of %d is %d\n", num, result);
+
+    return 0;
+}
+
+
+
+
+
+Ques 3: WAP to print all prime numbers in an array
+Sol:
+#include <stdio.h>
+int isPrime(int num)
+{
+ if (num < 2)
+  return 0;
+ for (int i=2;i*2<=num ; i++)
+ {
+   if (num % i==0)
+     return 0;
+ }
+return 1;
+}
+
+int main()
+{
+ int size ;
+printf("Enter the size of the array: ");
+scanf("%d", & size);
+if(size <= 0)
+{
+ printf("Invalid array size. Please enter a positive number \n");
+ return 1;
+}
+int a[size];
+for (int i=0;i<size;i++)
+{
+ scanf("%d", &a[i]);
+}
+for (int j=0;j<size;j++)
+{
+ if(isPrime(a[size]))
+  printf("%d",a[j]);
+}
+return 0;
+}
+
+
+
+Ques 4:WAP to reverse an array
+Sol:
+#include <stdio.h>
+void reverseArray(int arr[], int size) 
+{
+    int start = 0;
+    int end = size - 1;
+    while (start < end) 
+   {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+
+void printArray(int arr[], int size) 
+{
+    printf("Reversed array: ");
+    for (int i = 0; i < size; i++) 
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() 
+{
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array: ");
+    for (int i = 0; i < size; i++) 
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    reverseArray(arr, size);
+    printArray(arr, size);
+
+    return 0;
+}
+
+
+Ques 5 : WAP to input n elements in an array and arrange them in non decreaasing order
+Sol:
+#include <stdio.h>
+void sortArray(int arr[], int n) 
+{
+    for (int i = 0; i < n - 1; i++) 
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (arr[j] > arr[j + 1]) 
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() 
+{
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    if (n <= 0) 
+    {
+        printf("Invalid input for the number of elements.\n");
+        return 1;
+    }
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) 
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    sortArray(arr, n);
+
+    printf("Array arranged in non-decreasing order: ");
+    for (int i = 0; i < n; i++) 
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+Ques 6: WAP to input n number in an array and find the difference between numbers at odd and even indexes
+Sol : 
+#include <stdio.h>
+int main()
+{
+ int n;
+ printf("Enter the length of array: ");
+ scanf("%d",&n);
+ int a[n];
+ for(int i=0; i<n; i++) 
+{
+  printf("Enter element %d:", i + 1);
+  scanf("%d",&a[i]); 
+}
+int K=0, even_sum = 0;
+while (K<n) 
+{
+ even sum = even_sum + a[K];
+ K=K+2;
+}
+printf ("%d", even_sum);
+int m=1, odd_sum = 0;
+while (m<n) 
+{
+ odd_sum = odd_sum + a[m];
+ m=m+2;
+}
+printf("%d", odd_sum);
+int diff;
+diff = even_sum - odd_sum;
+printf("%d", diff);
+return 0;
+}
+
+
+
+Ques 7: WAP to input n numbers in an array and reverse all the numbers
+Sol:
+#include<stdio.h>
+int main() 
+{
+ int n;
+ printf("Enter the length of array:");
+ scanf("%d", &n);
+ int a[n];
+ for (int i=0; i<n; i++)
+ {
+  printf("Enter element "%d", " i+1);
+  scanf("%d",&a[i]);
+ }
+for (int i=0; i<n; i++) 
+{
+ int rem=0, rev = 0;
+ while (a[i]!= 0) 
+  {
+   rem = a[i]%10;
+   rev = rev * 10 + rem;
+   a[i]=a[i]/10;
+  }
+  for (int i=0; i<n; i++) 
+  {
+    printf("%d",a[i]);
+  }
+return 0;
+}
