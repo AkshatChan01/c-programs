@@ -6,7 +6,175 @@ git branch -M main
 git remote add origin https://github.com/AkshatChan01/c-programs.git
 git push -u origin main
 
+FUNCTION QUESTIONS
+Ques 1: WAP using functions to check whether a number is palindrome or not
+Sol:
+#include <stdio.h>
+int isPalindrome(int num) {
+    int reversed = 0, original = num;
+    while (num != 0) {
+        int digit = num % 10;
+        reversed = reversed * 10 + digit;
+        num /= 10;
+    }
+    if (original == reversed)
+        return 1;
+    else
+        return 0;
+}
 
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (isPalindrome(num))
+        printf("%d is a palindrome.\n", num);
+    else
+        printf("%d is not a palindrome.\n", num);
+
+    return 0;
+}
+
+Ques 2:WAP using  fumction to check whether a no is prime or not
+Sol:
+#include <stdio.h>
+
+int isPrime(int num) {
+    if (num <= 1) {
+        return 0;
+    }
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            return 0; 
+        }
+    }
+    return 1; 
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (isPrime(num))
+        printf("%d is a prime number.\n", num);
+    else
+        printf("%d is not a prime number.\n", num);
+
+    return 0;
+}
+
+
+Ques 3: WAP to find the largest and the smallest element of an array using function
+Sol:
+
+#include <stdio.h>
+
+int findLargest(int arr[], int size) {
+    int largest = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i];
+        }
+    }
+    return largest;
+}
+
+int findSmallest(int arr[], int size) {
+    int smallest = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < smallest) {
+            smallest = arr[i];
+        }
+    }
+    return smallest;
+}
+
+int main() {
+    int arr[] = {10, 20, 5, 15, 25};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int largest = findLargest(arr, size);
+    int smallest = findSmallest(arr, size);
+
+    printf("Largest element in the array: %d\n", largest);
+    printf("Smallest element in the array: %d\n", smallest);
+
+    return 0;
+}
+
+Ques 4:WAP to calculate sum and average of elements in an array using function
+Sol:
+
+#include <stdio.h>
+
+int calculateSum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+float calculateAverage(int arr[], int size) {
+    int sum = calculateSum(arr, size);
+    return (float)sum / size;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int sum = calculateSum(arr, size);
+    float average = calculateAverage(arr, size);
+
+    printf("Sum of elements in the array: %d\n", sum);
+    printf("Average of elements in the array: %.2f\n", average);
+
+    return 0;
+}
+
+Ques 5:WAP to sort elements in an array in descending order using function
+Sol:
+
+#include <stdio.h>
+int main()
+{
+ int size ;
+ printf("Enter the size of the array: ");
+ scanf("%d", & size);
+ int a[size];
+ for (int i=0;i<size;i++)
+ {
+  scanf("%d", &a[i]);
+ }
+pass(a,size);
+printf("sorted array:");
+for (int i=0;i<size;i++)
+{
+ printf("%d",a[size]);
+}
+return 0;
+}
+
+void pass(int a[],int size)
+{ 
+ int temp;
+ int i,j;
+ for (i=0;;i<size;i++)
+  {
+    for (j=0;;j<size;j++)
+     { 
+       if(a[j]<a[j+1])
+       {
+        temp = a[j];
+        a[j] = a[j+1];
+        a[j+1] = temp;
+       } 
+     }
+   }
+}
 
 RECURRSION QUESTIONS
 
@@ -70,6 +238,7 @@ int main() {
 
 Ques 3: WAP to input n numbers in an array and reverse array using recurrsion
 Sol:
+
 #include <stdio.h>
 int reverse Army (int arr[], int start, int end)
 {
@@ -102,6 +271,7 @@ return 0;
 
 Ques 4: WAP to pass matrix as a  whole in a function and find its transpose
 Sol:
+
 #include <stdio.h>
 int r,c;
 vold func(int [][c]);
@@ -498,4 +668,34 @@ printf(", a[j][i];
 }
 printf("\n");
 }
+}
+
+Ques 10: WAP to delete an element from an array from a particular position
+Sol:
+#include <stdio.h>
+int main() {
+    int size, position;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter %d elements:\n", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter the position of element to delete (1 to %d): ", size);
+    scanf("%d", &position);
+    if (position < 1 || position > size) {
+        printf("Invalid position.\n");
+        return 1;
+    }
+    for (int i = position - 1; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    size--;
+    printf("Array after deleting element at position %d:\n", position);
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
 }
