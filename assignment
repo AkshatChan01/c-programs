@@ -1,11 +1,3 @@
-echo "# c-programs" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/AkshatChan01/c-programs.git
-git push -u origin main
-
 FUNCTION QUESTIONS
 Ques 1: WAP using functions to check whether a number is palindrome or not
 Sol:
@@ -314,6 +306,178 @@ printf("\n");
 }
 }
 
+
+
+Ques 5:WAP to define a recursive function to print first N-multiples of 5.
+Sol:
+#include <stdio.h>
+void printMultiplesOf5(int n, int count) {
+    if (count == 0) {
+        return;
+    }
+    
+    printMultiplesOf5(n, count - 1);
+    printf("%d ", n * count);
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of multiples of 5 to print: ");
+    scanf("%d", &n);
+
+    printf("The first %d multiples of 5 are: ", n);
+    printMultiplesOf5(5, n);
+
+    return 0;
+}
+
+
+Ques 6:WAP to check if the given number is prime or not?
+Sol:
+
+#include <stdio.h>
+int isPrime(int n, int i) {
+    if (n <= 2) {
+        return (n == 2);
+    }
+    
+    if (i == 1) {
+        return 1;
+    }
+    
+    if (n % i == 0) {
+        return 0;
+    }
+    
+    return isPrime(n, i - 1);
+}
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (isPrime(number, number / 2)) {
+        printf("%d is a prime number.\n", number);
+    } else {
+        printf("%d is not a prime number.\n", number);
+    }
+
+    return 0;
+}
+
+
+Ques 7:WAP to print all factors of a number
+Sol:
+#include <stdio.h>
+
+void printFactors(int n, int i) {
+    if (i > n) {
+        return;
+    }
+
+    if (n % i == 0) {
+        printf("%d ", i);
+    }
+
+    printFactors(n, i + 1);
+}
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    printf("Factors of %d are: ", number);
+    printFactors(number, 1);
+
+    return 0;
+}
+
+
+Ques 8:WAP to print the series: 1-2+3-4+5-6+7-8+9-... N terms
+Sol:
+#include <stdio.h>
+
+void printSeries(int start, int end, int term) {
+    if (term == 0) {
+        return;
+    }
+
+    if (start % 2 == 0) {
+        printf("%d ", -end);
+    } else {
+        printf("%d ", end);
+    }
+
+    printSeries(start + 1, end + 1, term - 1);
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    printf("The series is: ");
+    printSeries(1, 2, n);
+
+    return 0;
+}
+
+Ques 9:WAP to find sum of square of digits of a number 'N', where N is entered by the user.
+Sol:
+#include <stdio.h>
+
+int sumOfSquareOfDigits(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        int digit = n % 10;
+        return (digit * digit) + sumOfSquareOfDigits(n / 10);
+    }
+}
+
+int main() {
+    int number, result;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    result = sumOfSquareOfDigits(number);
+
+    printf("Sum of squares of digits of %d is: %d\n", number, result);
+
+    return 0;
+}
+
+Ques 10:WAP to find N-th term of Fibonacci series, where N is user input.
+Sol:
+#include <stdio.h>
+
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+
+int main() {
+    int n, result;
+
+    printf("Enter the value of N to find the N-th term of Fibonacci series: ");
+    scanf("%d", &n);
+
+    result = fibonacci(n);
+
+    printf("The %d-th term of Fibonacci series is: %d\n", n, result);
+
+    return 0;
+}
 
 ARRAY QUESTIONS
 
